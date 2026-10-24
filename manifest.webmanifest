@@ -1,0 +1,20 @@
+{
+  "name": "Yarrie Meat Defrost Labels",
+  "short_name": "Meat Defrost",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#eaf1f1",
+  "theme_color": "#087d80",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
