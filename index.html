@@ -1,5 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Yarrie Meat Defrost Labels</title><style>:root{font-family:system-ui,Arial;color:#183942;background:#eaf1f1}*{box-sizing:border-box}body{margin:0;padding:18px}main{max-width:850px;margin:auto}section{background:white;border-radius:20px;padding:22px;margin:16px 0}h1{margin:0}p{color:#60777c}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}label{display:block;font-weight:700;font-size:14px;margin-bottom:5px}input,select{width:100%;padding:12px;border:1px solid #b6c9cb;border-radius:9px;font-size:16px}button{border:0;border-radius:11px;padding:14px;background:#087d80;color:white;font-weight:750;cursor:pointer}button.secondary{background:#536f73}button.danger{background:#a44242}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px}.entry{display:flex;align-items:center;justify-content:space-between;gap:8px;border-bottom:1px solid #ddd;padding:10px 0;flex-wrap:wrap}.entry .actions{margin-top:0}.entry button{padding:10px}.editbox{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.editbox label{font-size:12px}.editbox input{padding:8px}@media(max-width:520px){.editbox{grid-template-columns:1fr}}.sheet{width:100%;max-width:600px;aspect-ratio:210/297;border:1px solid #aaa;background:white;margin:auto;padding:5.1% 3.2%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(8,1fr);gap:0;overflow:hidden}.sticker{border:1px dotted #ddd;padding:2px 4px;overflow:hidden;font-size:clamp(5px,1.12vw,8px);color:#111}.sticker strong{font-size:1.12em}.dot{float:left;border:1px solid #444;border-radius:50%;width:29%;aspect-ratio:1;display:grid;place-items:center;text-align:center;font-size:.72em;margin-right:5px}.small{font-size:12px} @media(max-width:520px){.grid{grid-template-columns:1fr}.sheet{padding:5% 3%}.sticker{font-size:5px}}@media print{body{padding:0;background:white}header,.editor,.controls,.printhelp{display:none!important}section{padding:0;margin:0}.sheet{border:0;width:210mm;height:297mm;max-width:none;padding:15.5mm 5.9mm;grid-template-columns:99.1mm 99.1mm;grid-template-rows:repeat(8,34mm);aspect-ratio:auto}.sticker{border:0;font-size:7pt;padding:1mm 2mm}.dot{width:18mm;height:18mm;font-size:5.5pt}@page{size:A4;margin:0}} .meat-card{border:1px solid #d4e0e2;border-radius:12px;padding:16px;margin:14px 0;background:#f9fcfc}.meat-card h3{margin:0 0 10px}.meat-card label{font-size:13px}.meat-card input{margin-top:5px}#pages,.controls{display:none!important}@media(max-width:520px){.meat-card .grid{grid-template-columns:1fr}}
-</style></head><body><main><header><h1>Yarrie Kitchen · Meat Defrost</h1><p><strong>VERSION 8 — REFINED LABEL LAYOUT</strong></p><p>LABL1002 / Avery L7162 · 16 labels per A4 sheet · 99.1 × 34 mm</p></header><section class="editor"><h2>Meat defrost labels</h2><p>Add and edit meats directly in the list, just like Sandwich Labels. Every entry is included in the PDF automatically.</p><div id="meatlist"></div><button id="add" type="button" style="width:100%;margin-top:12px">+ ADD ANOTHER MEAT</button><p id="count"></p><button id="print" type="button" style="width:100%;margin-top:12px">DOWNLOAD ALL MEAT LABELS PDF</button><p id="status" class="small"></p><a id="download" hidden download="Yarrie_Meat_Defrost_Labels.pdf">Download PDF again</a><div style="margin-top:18px"><h3>Print-ready PDF preview</h3><iframe id="pdfpreview" title="Meat defrost label PDF preview" style="width:100%;height:460px;border:1px solid #cbd8da;border-radius:10px"></iframe><p class="small">Print at A4, Actual Size / 100%. Test alignment on plain paper before using label stock.</p></div><div class="actions"><button class="danger" id="clearmaster">CLEAR MEAT LIST</button></div><p class="small">Use-by dates must follow your site's defrosting and food-safety procedure.</p></section><section class="controls"><h2>Print preview</h2><p>Each page contains 2 columns × 8 rows. Empty slots remain blank.</p></section><div id="pages"></div></main><script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script><script>
+</style></head><body><main><header><h1>Yarrie Kitchen · Meat Defrost</h1><p><strong>VERSION 9 — MEAT DEFROST LABEL REDESIGN</strong></p><p>LABL1002 / Avery L7162 · 16 labels per A4 sheet · 99.1 × 34 mm</p></header><section class="editor"><h2>Meat defrost labels</h2><p>Add and edit meats directly in the list, just like Sandwich Labels. Every entry is included in the PDF automatically.</p><div id="meatlist"></div><button id="add" type="button" style="width:100%;margin-top:12px">+ ADD ANOTHER MEAT</button><p id="count"></p><button id="print" type="button" style="width:100%;margin-top:12px">DOWNLOAD ALL MEAT LABELS PDF</button><p id="status" class="small"></p><a id="download" hidden download="Yarrie_Meat_Defrost_Labels.pdf">Download PDF again</a><div style="margin-top:18px"><h3>Print-ready PDF preview</h3><iframe id="pdfpreview" title="Meat defrost label PDF preview" style="width:100%;height:460px;border:1px solid #cbd8da;border-radius:10px"></iframe><p class="small">Print at A4, Actual Size / 100%. Test alignment on plain paper before using label stock.</p></div><div class="actions"><button class="danger" id="clearmaster">CLEAR MEAT LIST</button></div><p class="small">Use-by dates must follow your site's defrosting and food-safety procedure.</p></section><section class="controls"><h2>Print preview</h2><p>Each page contains 2 columns × 8 rows. Empty slots remain blank.</p></section><div id="pages"></div></main><script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script><script>
 const $=id=>document.getElementById(id);
 const KEY='yarrie_meat_defrost_items_v2';
 let meats=[];try{const saved=JSON.parse(localStorage.getItem(KEY)||'[]');if(Array.isArray(saved))meats=saved}catch(e){}
@@ -10,16 +10,16 @@ const fields=['item','employee','prep','time','useby','qty','dot'];
 function fresh(){const d=new Date(),u=new Date(d);u.setDate(u.getDate()+2);const iso=x=>`${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`;return {item:'',employee:'Nas J Marah',prep:iso(d),time:'08:30',useby:iso(u),dot:true,qty:1}}
 function valid(e){return e.item&&Number.isInteger(e.qty)&&e.qty>=1&&e.qty<=500}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(meats))}catch(e){alert('Unable to save list on this device.')}}
-function label(e){if(!e)return '<div class="sticker"></div>';return `<div class="sticker"><div><strong>ITEM</strong> ${esc(e.item)}</div><div><strong>PREP DATE</strong> ${date(e.prep)} &nbsp; <strong>TIME</strong> ${esc(e.time)}</div>${e.dot?'<div class="dot">PLACE<br>DAYDOT<br>HERE</div>':''}<div style="margin-top:4px"><strong>USE BY</strong> ${date(e.useby)}</div><div style="margin-top:6px"><strong>EMPLOYEE</strong> ${esc(e.employee)}</div></div>`}
+function label(e){if(!e)return '<div class="sticker"></div>';return `<div class="sticker"><div style="text-align:center"><strong>MEAT DEFROST</strong></div><div><strong>${esc(e.item.toUpperCase())}</strong></div><div><strong>DEFROST:</strong> ${date(e.prep)}</div><div><strong>USE BY:</strong> ${date(e.useby)}</div><div><strong>EMPLOYEE:</strong> ${esc(e.employee)}</div>${e.dot?`<div class="dot">${esc(e.time)}</div>`:''}</div>`}
 function render(){
  $('meatlist').innerHTML=meats.map((e,i)=>`<div class="meat-card" data-row="${i}"><h3>Meat ${i+1}</h3><div class="grid">
  <label>MEAT NAME<input data-field="item" type="text" placeholder="e.g. Chicken breast" value="${esc(e.item)}"></label>
  <label>NUMBER OF LABELS<input type="number" min="1" max="500" data-field="qty" value="${e.qty}"></label>
- <label>PREP DATE<input type="date" data-field="prep" value="${esc(e.prep)}"></label>
- <label>PREP TIME<input type="time" data-field="time" value="${esc(e.time)}"></label>
+ <label>DEFROST DATE<input type="date" data-field="prep" value="${esc(e.prep)}"></label>
+ <label>DEFROST TIME<input type="time" data-field="time" value="${esc(e.time)}"></label>
  <label>USE BY<input type="date" data-field="useby" value="${esc(e.useby)}"></label>
  <label>EMPLOYEE<input data-field="employee" value="${esc(e.employee)}"></label>
- </div><label style="margin-top:10px"><input type="checkbox" data-field="dot" ${e.dot?'checked':''} style="width:auto"> Include day dot circle</label>
+ </div><label style="margin-top:10px"><input type="checkbox" data-field="dot" ${e.dot?'checked':''} style="width:auto"> Show time circle</label>
  <div class="actions"><button class="danger" data-delete="${i}" type="button">REMOVE THIS MEAT</button></div></div>`).join('');
  document.querySelectorAll('[data-row]').forEach(row=>{const i=+row.dataset.row;row.querySelectorAll('[data-field]').forEach(el=>{const handler=()=>{const field=el.dataset.field;const val=el.type==='checkbox'?el.checked:field==='qty'?Number(el.value):el.value;meats[i][field]=val;save();updateCount()};el.addEventListener('input',handler);el.addEventListener('change',handler)})});
  document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>{if(confirm('Remove this meat?')){meats.splice(+b.dataset.delete,1);save();render()}});
@@ -51,28 +51,27 @@ $('print').onclick=async()=>{
   if(k%16===0)pdf.addPage([W,H]);
   const page=pdf.getPages()[pdf.getPageCount()-1],e=all[k],slot=k%16,col=slot%2,row=Math.floor(slot/2);
   const x=left+col*cw,y=H-top-row*ch;
-  const pad=pt(4.3),innerX=x+pad,right=x+cw-pad,topY=y-pt(4.2);
-  // The sticker itself has no border; pale dividers organize its contents.
-  write(page,'MEAT DEFROST',innerX,topY,6.7,true,muted);
-  const name=fit(e.item,bold,cw-2*pad-pt(1),12,8);
-  write(page,name.str,innerX,topY-pt(5.2),name.size,true);
-  page.drawLine({start:{x:innerX,y:topY-pt(7.3)},end:{x:right,y:topY-pt(7.3)},thickness:.45,color:line});
-  const base=topY-pt(11.1);
-  write(page,'PREP',innerX,base,6.3,true,muted);
-  write(page,date(e.prep),innerX+pt(11.2),base,8,false);
-  write(page,'TIME',innerX+pt(49),base,6.3,true,muted);
-  write(page,e.time,innerX+pt(61),base,8,false);
-  write(page,'USE BY',innerX,base-pt(5.2),6.3,true,muted);
-  write(page,date(e.useby),innerX+pt(16),base-pt(5.2),8.5,true);
-  write(page,'BY',innerX,base-pt(10.4),6.3,true,muted);
-  const emp=fit(e.employee,font,e.dot?pt(53):pt(72),7.8,6.3);
-  write(page,emp.str,innerX+pt(8),base-pt(10.4),emp.size);
+  // Keep V8 A4 sticker geometry EXACTLY as printed and tested.
+  const pad=pt(4.3),innerX=x+pad,right=x+cw-pad;
+  const center=x+cw/2;
+  const title='MEAT DEFROST';
+  write(page,title,center-bold.widthOfTextAtSize(title,8)/2,y-pt(5.0),8,true,muted);
+  const name=fit(e.item.toUpperCase(),bold,pt(72),14,9);
+  write(page,name.str,innerX,y-pt(12),name.size,true);
+  const base=y-pt(17.6);
+  write(page,'DEFROST:',innerX,base,8,true,muted);
+  write(page,date(e.prep),innerX+pt(23),base,10,true);
+  write(page,'USE BY:',innerX,base-pt(5.4),8,true,muted);
+  write(page,date(e.useby),innerX+pt(23),base-pt(5.4),10,true);
+  write(page,'EMPLOYEE:',innerX,base-pt(10.8),8,true,muted);
+  const emp=fit(e.employee,font,e.dot?pt(45):pt(67),9,7);
+  write(page,emp.str,innerX+pt(27),base-pt(10.8),emp.size);
   if(e.dot){
-    const cx=right-pt(9),cy=y-pt(23.5);
-    page.drawCircle({x:cx,y:cy,size:pt(7.6),borderColor:muted,borderWidth:.9});
-    const a='DAY',b='DOT';
-    write(page,a,cx-bold.widthOfTextAtSize(a,6)/2,cy+pt(.6),6,true,muted);
-    write(page,b,cx-bold.widthOfTextAtSize(b,6)/2,cy-pt(2.2),6,true,muted);
+    const cx=right-pt(10),cy=y-pt(20.5);
+    page.drawCircle({x:cx,y:cy,size:pt(8.2),borderColor:muted,borderWidth:1.1});
+    const t=String(e.time||'');
+    const ts=fit(t,bold,pt(14),10,7);
+    write(page,ts.str,cx-bold.widthOfTextAtSize(ts.str,ts.size)/2,cy-ts.size*.35,ts.size,true);
   }
  }
  const bytes=await pdf.save();if(window._meatPdfUrl)URL.revokeObjectURL(window._meatPdfUrl);window._meatPdfUrl=URL.createObjectURL(new Blob([bytes],{type:'application/pdf'}));
